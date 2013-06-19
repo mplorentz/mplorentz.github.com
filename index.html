@@ -36,32 +36,38 @@
 			margin-bottom:20px;
 		}
 		
-		#nav_bar {
+		#bar {
+			width:100%;
 			background-color:black;
-			color:white;
-			font-size:23px;
 			height:35px;
-			margin-top:10px;
-			margin-bottom:10px;
+			margin-top:29px;
+			margin-bottom:29px;
 			padding-top:10px;
 			padding-right:10px;
 			padding-left:10px;	
 		}
 		
-		#nav_site {
+		#nav_bar {
+			width:70%;
+			color:white;
+			font-size:23px;
+			margin:0 auto;
+		}
+		
+		.nav_left a {
 			float:left;
-		}
-		
-		#nav_social {
+			text-align:left;
+			margin-left:0px;
+			margin-right:16px;
+		}		
+		.nav_right a {
 			float:right;
+			text-align:right;
+			margin-left:16px;
+			margin-right:0px;			
 		}
 		
-		.nav {
-			margin-left:8px;
-			margin-right:8px;
-		}
-		
-		a.nav {
+		.nav a {
 			color:white;
 			text-decoration:none;
 			font-size:23px;
@@ -70,24 +76,25 @@
 		body {
 			font-family: 'Maven Pro', sans-serif;
 			font-size:21px;
-			margin-left:10%;
-			margin-right:10%;
+			margin:0;
 		}
 	
 		#profile_pic {
-			margin:30px;
-			margin-left:40px;
-			margin-top:0px;
+			vertical-align:middle;
+			width:147px;
+			height:145px;
 		}
 	
 		#content {
-	
+			width:70%;
+			margin:0 auto;
 		}
 	
 		#body-text {
 			font-size:18px;
-			margin:20px;
-			margin-top:27px;
+			margin:29px;
+			margin-top:0px;
+			margin-right:0px;
 		}
 		</style>
 		<link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
@@ -113,20 +120,16 @@
 				I make computers be nice to people.
 			</div>
 		</div>
-		<div id="nav_bar">
-			<span id="nav_site">
-				<span>
-					<a class="nav" href="http://www.mattlorentz.com">Home</a>
+		<div id="bar">
+			<div id="nav_bar">
+				<span class="nav_left nav">
+						<a href="http://www.mattlorentz.com">Home</a>
 				</span>
-			</span>
-			<span id="nav_social">
-				<span>
-					<a class="nav" href="http://www.twitter.com/mplorentz">Twitter<a>
+				<span class="nav_right nav">
+						<a href="http://www.twitter.com/mplorentz">Twitter</a>
+						<a href="http://mattl.tent.is">Tent</a>
 				</span>
-				<span>
-					<a class="nav" href="http://mattl.tent.is">Tent</a>
-				</span>
-			</span>
+			</div>
 		</div>
 		<div id="content">
 			<table>
@@ -136,13 +139,12 @@
 					</td>
 					<td>
 						<div id="body-text">
-							Computers are some of the greatest tools ever invented, but they don't talk to people. There are many ideas waiting to be translated from people minds to computer minds.
+							Hi, I'm Matt Lorentz and I love making beautiful, functional software. 
 							<br/><br/>
-							I'm Matt Lorentz, and I have a passion for translating these ideas into beautiful, functional software for people to use. 
-							<br/><br/>
-							I'm a third-year computer science student at IU. I've had the opportunity to work with two great Indianapolis-based consulting firms - E-gineering, and Blue Horseshoe Consulting - and I'm currently enjoying working with a cool startup called Doublemap. Check them out, and get in touch if you're interested in working with me. 
-							<br/><br/>
-							Feel free to contact me on <a href="http://www.twitter.com/mplorentz">Twitter</a> or <a href="http://mattl.tent.is">Tent</a> (<a href="http://tent.io">say what?</a>).
+							I'm studying computer science at Indiana University, and working for a startup called 
+							Doublemap. I share a lot of my thoughts on <a href="http://mattl.tent.is">Tent</a> 
+							(<a href="http://tent.io">what's that?</a>) and 
+							<a href="http://www.twitter.com/mplorentz">Twitter</a>. 
 						</div>
 					</td>
 				</tr>
