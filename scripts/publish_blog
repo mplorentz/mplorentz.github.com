@@ -1,0 +1,11 @@
+git checkout master
+git pull
+jekyll build
+git clone git@github.com:mplorentz/mplorentz.github.com.git tmp_site
+cp -R _site/* tmp_site/blog/
+cd tmp_site
+git add blog
+git commit -m "auto-publishing blog"
+git push origin master
+cd ..
+rm -rf /home/aldburg/dev/blog/tmp_site
