@@ -38,3 +38,5 @@ exclude:
    - vendor/cache/
    - vendor/gems/
    - vendor/ruby/
+   - scripts
+   - tmp_site
