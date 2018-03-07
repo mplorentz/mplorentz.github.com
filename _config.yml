@@ -16,7 +16,7 @@
 title: Matthew Lorentz
 email: matt@lorentz.is
 description: # this means to ignore newlines until "baseurl:"
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "/weblog" # the subpath of your site, e.g. /blog
 url: "http://mattlorentz.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mplorentz
 github_username:  mplorentz
