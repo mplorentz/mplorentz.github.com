@@ -1,0 +1,12 @@
+[Unit]                                                                                                                                                        
+Description=sbot                                                                                                                                        
+
+[Service]                                                                                                                                                     
+Environment="PATH=/home/user/.nvm/versions/node/v8.10.0/bin:$PATH"
+ExecStart=/home/user/.nvm/versions/node/v8.10.0/bin/sbot server --path /home/user/ssb --port 8321 --caps.shs "secretkey"
+Restart=on-failure                                                                                                                                         
+User=user                                                                                                                                                 
+Group=user
+
+[Install]                                                                                                                                                     
+WantedBy=multi-user.target  
