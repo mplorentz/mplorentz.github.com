@@ -27,12 +27,12 @@ I've been making it my personal challenge lately to see how many of my online ta
 
 * Navigation: [Galileo](https://itunes.apple.com/us/app/galileo-offline-maps-and-nav/id321745474?mt=8)
 * News: [NewsBlur RSS reader](https://itunes.apple.com/us/app/newsblur/id463981119?mt=8)
-* Reference material: Kiwix. Allows you to download Wikipedia, Wikivoyage, StackExchange, and more. Creates a great offline search engine.
-* Music: Spotify
-* Movies: VLC
-* Books: Kindle and iBooks
-* Blogging: Working Copy + iA Writer
-* File transfers: AirDrop + GoodReader. Still no good Syncthing app for iOS :(
+* Reference material: [Kiwix](https://itunes.apple.com/us/app/kiwix/id997079563?mt=8). Allows you to download Wikipedia, Wikivoyage, StackExchange, and more. Creates a great offline search engine.
+* Music: [Spotify](https://itunes.apple.com/us/app/spotify-music/id324684580?mt=8)
+* Movies: [VLC](https://itunes.apple.com/us/app/vlc-for-mobile/id650377962?mt=8)
+* Books: [Kindle](https://itunes.apple.com/us/app/amazon-kindle/id302584613?mt=8) and [iBooks](https://itunes.apple.com/us/app/ibooks/id364709193?mt=8)
+* Blogging: [Working Copy](https://itunes.apple.com/us/app/working-copy/id896694807?mt=8) + [iA Writer](https://itunes.apple.com/us/app/ia-writer/id775737172?mt=8)
+* File transfers: AirDrop + [GoodReader](https://itunes.apple.com/us/app/goodreader/id777310222?mt=8). Still no good [Syncthing](https://syncthing.net) app for iOS :(
 
 Most of these apps have now replaced their online-only counterparts for my daily use. Some of them are lacking in features or polish, but for the most part the enhanced privacy, minimal data usage, and higher reliability make them superior alternatives. 
 
