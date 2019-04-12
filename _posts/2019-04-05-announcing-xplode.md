@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Xplode - A script to reset your Xcodes
-date: 2019-04-05
+date: 2019-04-12
 tags: xcode swift release
 ---
 
@@ -32,6 +32,6 @@ I have always been frustrated with Xcode’s cryptic and sometimes random errors
 
 My current client has several Swift frameworks that install one another via CocoaPods. Some of them have Objective-C dependencies and they aren’t always using the same versions of Swift and Xcode. I think this has been the perfect storm to bring out all the weird corner cases in the Xcode toolchain. After making one too many jokes about throwing my computer out the window I decided to take matters into my own hands.
 
-The name "Xplode" (which I think came from my friend [Josh](http://jtbrown.org), thanks Josh) is leftover from the original design which was supposed to physically blow up your computer and order a new one from Apple, checking out your git repo and rebuilding your project when the new machine arrived. This version probably would have still saved some developers time and money, but was deemed impractical for other reasons. The second prototype used AppleScript to fill your screen with animated GIFs of explosions and people destroying computers while it ran through the steps to restart Xcode in the background. The AppleScript needed to tile an arbitrary set of GIFs onscreen dwarfed the code that actually turned things off an back on again. Ultimately macOS Mojave’s permission dialogs killed that version too. Thus the current Bash version was born. It isn’t much fun but gets the job done.
+The name "Xplode" (which I think came from my friend [Josh](http://jtbrown.org), thanks Josh) is leftover from the original design which was supposed to physically blow up your computer and order a new one from Apple, checking out your git repo and rebuilding your project when the new machine arrived. This version probably would have still saved some developers time and money, but was deemed impractical for other reasons. The second prototype used AppleScript to fill your screen with animated GIFs of explosions and people destroying computers while it ran through the steps to restart Xcode in the background. The AppleScript necessary to tile an arbitrary set of GIFs onscreen dwarfed the code that actually turned things off an back on again. Ultimately macOS Mojave’s permission dialogs killed that version too. Thus the current Bash version was born. It isn’t as much fun but gets the job done.
 
-If you want to try Xplode please feel free to open issues and contribute at [xplode.computer](http://xplode.computer).
+You can find the source code, open issues, and contribute at [xplode.computer](http://xplode.computer).
