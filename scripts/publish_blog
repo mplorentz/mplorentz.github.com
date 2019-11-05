@@ -1,6 +1,6 @@
 git checkout master
 git pull
-jekyll build
+bundle exec jekyll build
 git clone git@github.com:mplorentz/mplorentz.github.com.git tmp_site
 cp -R _site/* tmp_site/weblog/
 cd tmp_site
