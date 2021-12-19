@@ -22,7 +22,7 @@
    })();
    </script>
 
-   <link type="application/atom+xml" rel="alternate" href="http://mattlorentz.com/weblog/feed.xml" title="Matthew Lorentz" />
+   <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/weblog/feed.xml" title="Matthew Lorentz" />
 </head>
 
 
@@ -63,60 +63,60 @@
         <ul>
           <li>Make sure you have python3 and python3-pip installed
             <ul>
-              <li><code class="highlighter-rouge">apt-get install python3 python3-pip</code></li>
+              <li><code class="language-plaintext highlighter-rouge">apt-get install python3 python3-pip</code></li>
             </ul>
           </li>
           <li>Install the feed2toot script
             <ul>
-              <li><code class="highlighter-rouge">pip3 install feed2toot</code></li>
+              <li><code class="language-plaintext highlighter-rouge">pip3 install feed2toot</code></li>
             </ul>
           </li>
         </ul>
       </li>
       <li>Install via git. This is what I ended up doing because I made some modifications to the script (more on that below)
         <ul>
-          <li><code class="highlighter-rouge">git clone git@gitlab.com:mplorentz/feed2toot.git</code></li>
+          <li><code class="language-plaintext highlighter-rouge">git clone git@gitlab.com:mplorentz/feed2toot.git</code></li>
         </ul>
       </li>
     </ul>
   </li>
   <li>Connect feed2toot to Mastodon by running the following command:
     <ul>
-      <li><code class="highlighter-rouge">register_feed2toot_app</code></li>
+      <li><code class="language-plaintext highlighter-rouge">register_feed2toot_app</code></li>
     </ul>
   </li>
   <li>Create your configuration file. This allows you to customize the behavior of feed2toot. You can find the default configuration and a full list of options <a href="https://feed2toot.readthedocs.io/en/latest/configure.html">here</a>. In the file you will want to:
     <ul>
-      <li>Change <code class="highlighter-rouge">toot_visibility</code> to <code class="highlighter-rouge">public</code> (Once you have tested it)</li>
-      <li>Paste your RSS feed URL into the <code class="highlighter-rouge">uri</code> field.</li>
+      <li>Change <code class="language-plaintext highlighter-rouge">toot_visibility</code> to <code class="language-plaintext highlighter-rouge">public</code> (Once you have tested it)</li>
+      <li>Paste your RSS feed URL into the <code class="language-plaintext highlighter-rouge">uri</code> field.</li>
     </ul>
   </li>
   <li>Test it. These commands will perform a dry run - they will not actually post any toots to Mastodon.
     <ul>
-      <li>If you installed via pip: <code class="highlighter-rouge">feed2toot -c feed2toot.ini -nv</code></li>
-      <li>If you installed via git: <code class="highlighter-rouge">python3 feed2toot.py -c feed2toot.ini -nv</code></li>
+      <li>If you installed via pip: <code class="language-plaintext highlighter-rouge">feed2toot -c feed2toot.ini -nv</code></li>
+      <li>If you installed via git: <code class="language-plaintext highlighter-rouge">python3 feed2toot.py -c feed2toot.ini -nv</code></li>
     </ul>
   </li>
-  <li>If things look good, you may want to go ahead and tell feed2toot to populate the cache. This prevents it from posting everything in your RSS feed the first time you run it for real. You can do this by running <code class="highlighter-rouge">feed2toot -c feed2toot.ini -p</code>.</li>
+  <li>If things look good, you may want to go ahead and tell feed2toot to populate the cache. This prevents it from posting everything in your RSS feed the first time you run it for real. You can do this by running <code class="language-plaintext highlighter-rouge">feed2toot -c feed2toot.ini -p</code>.</li>
   <li>Run feed2toot on a schedule.
     <ul>
-      <li>I added the following line to my crontab to run the script every minute: <code class="highlighter-rouge">* * * * * /usr/bin/python3 /path/to/feed2toot.py -c feed2toot.ini</code></li>
-      <li>Don’t forget to change <code class="highlighter-rouge">toot_visibility</code> to <code class="highlighter-rouge">public</code> in your configuration file if you didn’t already. Otherwise no one will see your toots!</li>
+      <li>I added the following line to my crontab to run the script every minute: <code class="language-plaintext highlighter-rouge">* * * * * /usr/bin/python3 /path/to/feed2toot.py -c feed2toot.ini</code></li>
+      <li>Don’t forget to change <code class="language-plaintext highlighter-rouge">toot_visibility</code> to <code class="language-plaintext highlighter-rouge">public</code> in your configuration file if you didn’t already. Otherwise no one will see your toots!</li>
     </ul>
   </li>
   <li>(Optional) Configure feed2toot to only toot micro posts.
     <ul>
       <li>I have an <a href="https://gitlab.com/chaica/feed2toot/merge_requests/11">open merge request</a> to support filtering items in the RSS feed based on a tag. For now you will need to install <a href="https://gitlab.com/mplorentz/feed2toot">my fork</a> of feed2toot using the git instructions above if you wish to use this feature.
         <ul>
-          <li>Change the <code class="highlighter-rouge">toot</code> line in your configuration file to this:
+          <li>Change the <code class="language-plaintext highlighter-rouge">toot</code> line in your configuration file to this:
             <ul>
-              <li><code class="highlighter-rouge">toot={summary}</code>. This instructs feed2toot to post the content of your micro post instead of the title and a link.</li>
+              <li><code class="language-plaintext highlighter-rouge">toot={summary}</code>. This instructs feed2toot to post the content of your micro post instead of the title and a link.</li>
             </ul>
           </li>
-          <li>Add the following two lines in the <code class="highlighter-rouge">[rss]</code> section:
+          <li>Add the following two lines in the <code class="language-plaintext highlighter-rouge">[rss]</code> section:
             <ul>
-              <li><code class="highlighter-rouge">tags_pattern={tag_name}</code> where “{tag_name}” is the tag that you use for your micro posts. On my Jekyll blog I tag all my micro posts with the “micro” tag, so my configuration file says <code class="highlighter-rouge">tags_pattern=micro</code>.</li>
-              <li><code class="highlighter-rouge">tags_pattern_case_sensitive=false</code></li>
+              <li><code class="language-plaintext highlighter-rouge">tags_pattern={tag_name}</code> where “{tag_name}” is the tag that you use for your micro posts. On my Jekyll blog I tag all my micro posts with the “micro” tag, so my configuration file says <code class="language-plaintext highlighter-rouge">tags_pattern=micro</code>.</li>
+              <li><code class="language-plaintext highlighter-rouge">tags_pattern_case_sensitive=false</code></li>
             </ul>
           </li>
         </ul>
