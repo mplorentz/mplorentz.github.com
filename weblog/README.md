@@ -15,4 +15,4 @@ Make your changes then run `bundle exec jekyll serve`
 
 # Publishing the site
 
-
+`./scripts/publish_blog`
