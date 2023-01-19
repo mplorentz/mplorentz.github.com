@@ -141,7 +141,7 @@ Here are some other **contrasts** that don’t fall clearly into advantage/disad
    </td>
    <td>
    </td>
-   <td>X
+   <td>
    </td>
   </tr>
   <tr>
