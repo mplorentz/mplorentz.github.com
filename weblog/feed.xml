@@ -1,4 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://mattlorentz.com/weblog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://mattlorentz.com/weblog/" rel="alternate" type="text/html" /><updated>2022-07-23T08:55:47-04:00</updated><id>http://mattlorentz.com/weblog/feed.xml</id><title type="html">Matthew Lorentz</title><entry><title type="html">Reinventing Organizations Book Report</title><link href="http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot.html" rel="alternate" type="text/html" title="Reinventing Organizations Book Report" /><published>2022-07-23T00:00:00-04:00</published><updated>2022-07-23T00:00:00-04:00</updated><id>http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot</id><content type="html" xml:base="http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot.html">&lt;p&gt;&lt;em&gt;This is a cross post from my Secure Scuttlebutt account. Some links won’t work because they are cypherlinks intended to be viewed on SSB.&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://mattlorentz.com/weblog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://mattlorentz.com/weblog/" rel="alternate" type="text/html" /><updated>2023-01-18T23:01:24-05:00</updated><id>http://mattlorentz.com/weblog/feed.xml</id><title type="html">Matthew Lorentz</title><entry><title type="html">Nostr v SSB</title><link href="http://mattlorentz.com/weblog/2023/01/18/nostr-v-ssb.html" rel="alternate" type="text/html" title="Nostr v SSB" /><published>2023-01-18T00:00:00-05:00</published><updated>2023-01-18T00:00:00-05:00</updated><id>http://mattlorentz.com/weblog/2023/01/18/nostr-v-ssb</id><content type="html" xml:base="http://mattlorentz.com/weblog/2023/01/18/nostr-v-ssb.html">&lt;p&gt;&lt;em&gt;This is part of a document I wrote up while researching Nostr on behalf of the company I work for, &lt;a href=&quot;https://planetary.social&quot;&gt;Planetary&lt;/a&gt;. I’m sharing it here because several people outside have asked to see it. These are my opnions after spending 5 years in the Secure Scuttlebutt community and 1 week in the Nostr community, so there are certainly some generalizations on the Nostr side that are based on first impressions and bias and may not be reflective of every part of the ecosystem. It’s also worth mentioning that Nostr is very young and could change significantly. Indeed it will have to if it continues to grow.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;Nostr is “The simplest open protocol that is able to create a censorship-resistant global ‘social’ network once and for all.” Nostr is very young and the protocol is still in its infancy. It’s unclear whether its simplicity is naive or elegant, whether it can scale to millions of users both in technical performance and preventing spam and abuse. Nevertheless the protocol is easy to work with and has a vibrant community quickly growing around it.&lt;/p&gt;
+
+&lt;p&gt;The key difference at a protocol level is that SSB posts are signed and published to an ordered append-only log, while Nostr posts are just signed and sent to to relay servers. There are many other differences most of them hinge on this fact.&lt;/p&gt;
+
+&lt;p&gt;The main &lt;strong&gt;advantages&lt;/strong&gt; it has over Scuttlebutt are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Onboarding is quick and easy.&lt;/li&gt;
+  &lt;li&gt;The protocol already supports editing, deleting, and ephemeral posts.&lt;/li&gt;
+  &lt;li&gt;You can use the same account with multiple devices.&lt;/li&gt;
+  &lt;li&gt;It is much easier to understand and implement.&lt;/li&gt;
+  &lt;li&gt;It has more active users, momentum, apps, and tools.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The main &lt;strong&gt;disadvantages&lt;/strong&gt; it has vs. Scuttlebutt are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There are not yet any good systems to prevent abuse on public relays. There is no way to block or hide abusive accounts or posts in most apps, there is no standard way to report abusive accounts to relay owners, there are no blocklists being shared by relay owners, etc.&lt;/li&gt;
+  &lt;li&gt;There is not yet any good solution to preventing spam on the network. The leading idea so far is adding a proof-of-work cost to publish a message, which is isn’t a great solution imo.&lt;/li&gt;
+  &lt;li&gt;Nostr messages are unordered. This is what gives the protocol its simplicity and power, but it creates some side effects:
+    &lt;ul&gt;
+      &lt;li&gt;You can never know if you have all the messages from a given account, even your own.&lt;/li&gt;
+      &lt;li&gt;You can’t efficiently sync messages between relays (yet). This results in awkward flows where users may not be sure where their data is or how to move it.&lt;/li&gt;
+      &lt;li&gt;It may not be obvious when a relay is omitting some content on purpose.&lt;/li&gt;
+      &lt;li&gt;Faking the timestamp on a message is much easier.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here are some other &lt;strong&gt;contrasts&lt;/strong&gt; that don’t fall clearly into advantage/disadvantage:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;strong&gt;SSB&lt;/strong&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;strong&gt;Nostr&lt;/strong&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Local discourse
+   &lt;/td&gt;
+   &lt;td&gt;Global discourse
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Freedom of listening first
+   &lt;/td&gt;
+   &lt;td&gt;Freedom of speech first
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Solarpunk, anti-capitalist vibes
+   &lt;/td&gt;
+   &lt;td&gt;crypto vibes
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Slow rate of protocol change
+   &lt;/td&gt;
+   &lt;td&gt;High rate of protocol change
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Poor docs + specs
+   &lt;/td&gt;
+   &lt;td&gt;Good docs + specs
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Founder inactive
+   &lt;/td&gt;
+   &lt;td&gt;Founder active
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Emphasis on relationships + governance to solve problems
+   &lt;/td&gt;
+   &lt;td&gt;Emphasis on technology to solve problems
+   &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;technical-feature-comparison&quot;&gt;Technical Feature Comparison&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;strong&gt;Feature&lt;/strong&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;strong&gt;SSB&lt;/strong&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;strong&gt;Nostr&lt;/strong&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Self-authenticating data
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Identity portability
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Trustless servers
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Multi-device identities
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Key rotation
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Key delegation
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Edit/Deleting Content
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Peer to Peer Replication
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Binary Data
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Peer content moderation
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Aliases for identities
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Retweets/reposts
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Impossible to fork feed
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Easy to add new message types
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Hashtags
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Ephemeral Messages
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Published social graph
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Private direct messages
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Private groups
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Public groups
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Emoji reactions
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Content warnings
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Web viewers
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;User interaction required for relays
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Works offline
+   &lt;/td&gt;
+   &lt;td&gt;X
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="social" /><category term="decentralized" /><category term="nostr" /><category term="ssb" /><summary type="html">This is part of a document I wrote up while researching Nostr on behalf of the company I work for, Planetary. I’m sharing it here because several people outside have asked to see it. These are my opnions after spending 5 years in the Secure Scuttlebutt community and 1 week in the Nostr community, so there are certainly some generalizations on the Nostr side that are based on first impressions and bias and may not be reflective of every part of the ecosystem. It’s also worth mentioning that Nostr is very young and could change significantly. Indeed it will have to if it continues to grow.</summary></entry><entry><title type="html">Reinventing Organizations Book Report</title><link href="http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot.html" rel="alternate" type="text/html" title="Reinventing Organizations Book Report" /><published>2022-07-23T00:00:00-04:00</published><updated>2022-07-23T00:00:00-04:00</updated><id>http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot</id><content type="html" xml:base="http://mattlorentz.com/weblog/2022/07/23/reinventing-organizations-book-repot.html">&lt;p&gt;&lt;em&gt;This is a cross post from my Secure Scuttlebutt account. Some links won’t work because they are cypherlinks intended to be viewed on SSB.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;I’ve been wanting to write down some more thoughts about the book &lt;a href=&quot;https://www.reinventingorganizations.com&quot;&gt;Reinventing Organizations&lt;/a&gt; which I finished several months ago, but I’m just getting around to doing it now. Huge thanks to &lt;a href=&quot;@6H9x/fq6Iq+NWs05WSzMToYuBQ02f2BMzwnhTtxr/ck=.ed25519&quot;&gt;@jeukku&lt;/a&gt; for the &lt;a href=&quot;%kNHIFfYhSYEgjpqhxP550/1Ohmck4IuQ+8SVEqGeyLY=.sha256&quot;&gt;recommendation&lt;/a&gt;, I’m so glad I picked this one up!&lt;/p&gt;
 
@@ -201,39 +498,4 @@
   &lt;li&gt;TODO: Donate to PeerTube&lt;/li&gt;
   &lt;li&gt;Replaced with: N/A&lt;/li&gt;
   &lt;li&gt;Data visible to: Google&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="decentralized" /><category term="google" /><summary type="html">Getting Rid of Google - 2019 Edition</summary></entry><entry><title type="html">20190226164537-0500</title><link href="http://mattlorentz.com/weblog/2019/02/26/164537-0500.html" rel="alternate" type="text/html" title="20190226164537-0500" /><published>2019-02-26T16:45:37-05:00</published><updated>2019-02-26T16:45:37-05:00</updated><id>http://mattlorentz.com/weblog/2019/02/26/164537-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2019/02/26/164537-0500.html">&lt;p&gt;Haven’t been using my Twitter account at all recently so I deleted it today. It served a good purpose but I’m on to smaller and better networks now.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Haven’t been using my Twitter account at all recently so I deleted it today. It served a good purpose but I’m on to smaller and better networks now.</summary></entry><entry><title type="html">20181113101115-0500</title><link href="http://mattlorentz.com/weblog/2018/11/13/101115-0500.html" rel="alternate" type="text/html" title="20181113101115-0500" /><published>2018-11-13T10:11:15-05:00</published><updated>2018-11-13T10:11:15-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/13/101115-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/13/101115-0500.html">&lt;p&gt;Bought our first car from a dealership last week. Horrible experience. Do not recommend. Will definitely be buying private or trying Carvana.com next time.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Bought our first car from a dealership last week. Horrible experience. Do not recommend. Will definitely be buying private or trying Carvana.com next time.</summary></entry><entry><title type="html">Micro.blog and Mastodon</title><link href="http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon.html" rel="alternate" type="text/html" title="Micro.blog and Mastodon" /><published>2018-11-08T21:05:00-05:00</published><updated>2018-11-08T21:05:00-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon.html">&lt;p&gt;This is pretty cool. &lt;a href=&quot;https://www.manton.org/2018/11/07/microblog-mastodon.html&quot;&gt;Micro.blog now supports the ActivityPub protocol&lt;/a&gt;, so it’s now possible to follow people from across the two networks. I haven’t really been using either network much lately, but my own posts here on my website end up on both. I would love to make &lt;a href=&quot;http://mattlorentz.com&quot;&gt;mattlorentz.com&lt;/a&gt; ActivityPub-aware, but I think I’d have to move away from a static site.&lt;/p&gt;</content><author><name></name></author><category term="mastodon" /><category term="activitypub" /><category term="federation" /><summary type="html">This is pretty cool. Micro.blog now supports the ActivityPub protocol, so it’s now possible to follow people from across the two networks. I haven’t really been using either network much lately, but my own posts here on my website end up on both. I would love to make mattlorentz.com ActivityPub-aware, but I think I’d have to move away from a static site.</summary></entry><entry><title type="html">20181105213000-0500</title><link href="http://mattlorentz.com/weblog/2018/11/05/213000-0500.html" rel="alternate" type="text/html" title="20181105213000-0500" /><published>2018-11-05T21:30:00-05:00</published><updated>2018-11-05T21:30:00-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/05/213000-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/05/213000-0500.html">&lt;p&gt;Just went through and picked the candidates I am voting for at &lt;a href=&quot;https://www.vote411.org&quot;&gt;Vote411.org&lt;/a&gt;. You can do research on all the candidates and questions that will be on your ballot, and then save your answers so you have them at the poll tomorrow. Pretty useful tool.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Just went through and picked the candidates I am voting for at Vote411.org. You can do research on all the candidates and questions that will be on your ballot, and then save your answers so you have them at the poll tomorrow. Pretty useful tool.</summary></entry><entry><title type="html">iOS Offline</title><link href="http://mattlorentz.com/weblog/2018/08/31/ios-offline.html" rel="alternate" type="text/html" title="iOS Offline" /><published>2018-08-31T12:00:00-04:00</published><updated>2018-08-31T12:00:00-04:00</updated><id>http://mattlorentz.com/weblog/2018/08/31/ios-offline</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/08/31/ios-offline.html">&lt;p&gt;I take the internet for granted. I am used to having a fast, stable connection at all times. But recently I’ve been in several situations where I have slow or unstable access to the internet. When it happens it’s usually a very frustrating experience. I’m driving and I can’t get directions to my destination. I’m at home and the movie we want to watch won’t load. Or I’m traveling and I only have a few minutes of WiFi every few days.&lt;/p&gt;
-
-&lt;p&gt;As an iOS app developer I don’t usually consider offline use. Most clients don’t see the value in it and don’t want to support it. And for some applications it doesn’t make any sense. But there are a whole host of people for whom offline use is a major feature. These include:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cell phone users with limited data&lt;/li&gt;
-  &lt;li&gt;Backpackers&lt;/li&gt;
-  &lt;li&gt;Subway commuters&lt;/li&gt;
-  &lt;li&gt;Residents of developing countries&lt;/li&gt;
-  &lt;li&gt;Residents of off-grid dwellings&lt;/li&gt;
-  &lt;li&gt;Preppers&lt;/li&gt;
-  &lt;li&gt;T-mobile customers&lt;/li&gt;
-  &lt;li&gt;Users in rural areas&lt;/li&gt;
-  &lt;li&gt;Users in disaster areas&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Offline-as-a-feature has another huge advantage. Privacy by default. In a normal app much work must be done to secure user data. Any communication with the server must be encrypted. Logs have to be anonymized. GDPR regulations require special database organization and backup strategies. If any of this work is done poorly or not at all the user’s privacy is compromised.&lt;/p&gt;
-
-&lt;p&gt;In the typical offline-first app the opposite is true. Much work must be done to compromise the user’s privacy. Extra code has to be written to send the user’s data to a server. The monetization strategy is less likely to sell out the user. Ads and analytics become impractical. The user is the customer and their data belongs to them.&lt;/p&gt;
-
-&lt;p&gt;I’ve been making it my personal challenge lately to see how many of my online tasks can be completed offline. I’ve gotten to prove out many of them this week on a cruise without any internet access. Here is a list of (iOS) apps that I’ve found very useful on my trip:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Navigation: &lt;a href=&quot;https://itunes.apple.com/us/app/galileo-offline-maps-and-nav/id321745474?mt=8&quot;&gt;Galileo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;News: &lt;a href=&quot;https://itunes.apple.com/us/app/newsblur/id463981119?mt=8&quot;&gt;NewsBlur RSS reader&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Reference material: &lt;a href=&quot;https://itunes.apple.com/us/app/kiwix/id997079563?mt=8&quot;&gt;Kiwix&lt;/a&gt;. Allows you to download Wikipedia, Wikivoyage, StackExchange, and more. Creates a great offline search engine.&lt;/li&gt;
-  &lt;li&gt;Music: &lt;a href=&quot;https://itunes.apple.com/us/app/spotify-music/id324684580?mt=8&quot;&gt;Spotify&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Movies: &lt;a href=&quot;https://itunes.apple.com/us/app/vlc-for-mobile/id650377962?mt=8&quot;&gt;VLC&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Books: &lt;a href=&quot;https://itunes.apple.com/us/app/amazon-kindle/id302584613?mt=8&quot;&gt;Kindle&lt;/a&gt; and &lt;a href=&quot;https://itunes.apple.com/us/app/ibooks/id364709193?mt=8&quot;&gt;iBooks&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Blogging: &lt;a href=&quot;https://itunes.apple.com/us/app/working-copy/id896694807?mt=8&quot;&gt;Working Copy&lt;/a&gt; + &lt;a href=&quot;https://itunes.apple.com/us/app/ia-writer/id775737172?mt=8&quot;&gt;iA Writer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;File transfers: AirDrop + &lt;a href=&quot;https://itunes.apple.com/us/app/goodreader/id777310222?mt=8&quot;&gt;GoodReader&lt;/a&gt;. Still no good &lt;a href=&quot;https://syncthing.net&quot;&gt;Syncthing&lt;/a&gt; app for iOS :(&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most of these apps have now replaced their online-only counterparts for my daily use. Some of them are lacking in features or polish, but for the most part the enhanced privacy, minimal data usage, and higher reliability make them superior alternatives.&lt;/p&gt;
-
-&lt;p&gt;Next time you‘re heading to an internet-free area check out some offline alternatives for yourself. You might find that you don’t need the Internet as much as you think.&lt;/p&gt;</content><author><name></name></author><category term="offline" /><category term="ios" /><summary type="html">I take the internet for granted. I am used to having a fast, stable connection at all times. But recently I’ve been in several situations where I have slow or unstable access to the internet. When it happens it’s usually a very frustrating experience. I’m driving and I can’t get directions to my destination. I’m at home and the movie we want to watch won’t load. Or I’m traveling and I only have a few minutes of WiFi every few days.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="decentralized" /><category term="google" /><summary type="html">Getting Rid of Google - 2019 Edition</summary></entry><entry><title type="html">20190226164537-0500</title><link href="http://mattlorentz.com/weblog/2019/02/26/164537-0500.html" rel="alternate" type="text/html" title="20190226164537-0500" /><published>2019-02-26T16:45:37-05:00</published><updated>2019-02-26T16:45:37-05:00</updated><id>http://mattlorentz.com/weblog/2019/02/26/164537-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2019/02/26/164537-0500.html">&lt;p&gt;Haven’t been using my Twitter account at all recently so I deleted it today. It served a good purpose but I’m on to smaller and better networks now.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Haven’t been using my Twitter account at all recently so I deleted it today. It served a good purpose but I’m on to smaller and better networks now.</summary></entry><entry><title type="html">20181113101115-0500</title><link href="http://mattlorentz.com/weblog/2018/11/13/101115-0500.html" rel="alternate" type="text/html" title="20181113101115-0500" /><published>2018-11-13T10:11:15-05:00</published><updated>2018-11-13T10:11:15-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/13/101115-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/13/101115-0500.html">&lt;p&gt;Bought our first car from a dealership last week. Horrible experience. Do not recommend. Will definitely be buying private or trying Carvana.com next time.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Bought our first car from a dealership last week. Horrible experience. Do not recommend. Will definitely be buying private or trying Carvana.com next time.</summary></entry><entry><title type="html">Micro.blog and Mastodon</title><link href="http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon.html" rel="alternate" type="text/html" title="Micro.blog and Mastodon" /><published>2018-11-08T21:05:00-05:00</published><updated>2018-11-08T21:05:00-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/08/microblog-and-mastodon.html">&lt;p&gt;This is pretty cool. &lt;a href=&quot;https://www.manton.org/2018/11/07/microblog-mastodon.html&quot;&gt;Micro.blog now supports the ActivityPub protocol&lt;/a&gt;, so it’s now possible to follow people from across the two networks. I haven’t really been using either network much lately, but my own posts here on my website end up on both. I would love to make &lt;a href=&quot;http://mattlorentz.com&quot;&gt;mattlorentz.com&lt;/a&gt; ActivityPub-aware, but I think I’d have to move away from a static site.&lt;/p&gt;</content><author><name></name></author><category term="mastodon" /><category term="activitypub" /><category term="federation" /><summary type="html">This is pretty cool. Micro.blog now supports the ActivityPub protocol, so it’s now possible to follow people from across the two networks. I haven’t really been using either network much lately, but my own posts here on my website end up on both. I would love to make mattlorentz.com ActivityPub-aware, but I think I’d have to move away from a static site.</summary></entry><entry><title type="html">20181105213000-0500</title><link href="http://mattlorentz.com/weblog/2018/11/05/213000-0500.html" rel="alternate" type="text/html" title="20181105213000-0500" /><published>2018-11-05T21:30:00-05:00</published><updated>2018-11-05T21:30:00-05:00</updated><id>http://mattlorentz.com/weblog/2018/11/05/213000-0500</id><content type="html" xml:base="http://mattlorentz.com/weblog/2018/11/05/213000-0500.html">&lt;p&gt;Just went through and picked the candidates I am voting for at &lt;a href=&quot;https://www.vote411.org&quot;&gt;Vote411.org&lt;/a&gt;. You can do research on all the candidates and questions that will be on your ballot, and then save your answers so you have them at the poll tomorrow. Pretty useful tool.&lt;/p&gt;</content><author><name></name></author><category term="micro" /><summary type="html">Just went through and picked the candidates I am voting for at Vote411.org. You can do research on all the candidates and questions that will be on your ballot, and then save your answers so you have them at the poll tomorrow. Pretty useful tool.</summary></entry></feed>
