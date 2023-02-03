@@ -1,0 +1,15 @@
+{
+   "names": {
+      "_": "npub16zsllwrkrwt5emz2805vhjewj6nsjrw0ge0latyrn2jv5gxf5k0q5l92l7"
+   },
+   "relays": {
+      "npub16zsllwrkrwt5emz2805vhjewj6nsjrw0ge0latyrn2jv5gxf5k0q5l92l7": [
+         "wss://nostr-pub.wellorder.net",
+         "wss://relay.nostr.bg",
+         "wss://e.nos.lol/",
+         "wss://relay.nostrgraph.net/",
+         "wss://nostr.relayer.se/",
+         "wss://nostr.fmt.wiz.biz"
+      ]
+   }
+}
