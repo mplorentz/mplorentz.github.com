@@ -2,10 +2,10 @@ git checkout master
 git pull
 bundle exec jekyll build
 git clone git@github.com:mplorentz/mplorentz.github.com.git tmp_site
-rsync -av --delete _site/* tmp_site/weblog/
+rsync -av --delete _site/* tmp_site/
 cd tmp_site
-git add weblog
-git commit -m "auto-publishing weblog"
+git add .
+git commit -m "auto-publishing entire site"
 git push origin master
 cd ..
 rm -rf tmp_site
