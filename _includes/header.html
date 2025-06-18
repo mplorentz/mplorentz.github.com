@@ -5,7 +5,7 @@
          🌱🚶‍♂️👾☀️👨‍💻🥾🪴
       </div>
       <div class="site-nav">
-         <a href="/">About</a> / <a href="/weblog/">Weblog</a>
+         <a href="/" {% if page.url == "/" %}class="active"{% endif %}>About</a> / <a href="/weblog/" {% if page.url contains "/weblog" %}class="active"{% endif %}>Weblog</a>
       </div>
    </div>
 </header>
