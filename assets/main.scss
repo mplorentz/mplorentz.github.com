@@ -65,6 +65,12 @@ a {
     padding: 5px;
 }
 
+/* Add spacing around p tags on index page */
+.home p, .post-content p {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
 #welcome {
     font-size: 16pt;
     max-width: 500px;
