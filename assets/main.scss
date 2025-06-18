@@ -67,9 +67,41 @@ a {
     padding: 20px;
 }
 
+/* Override mobile navigation to keep same layout on all screen sizes */
 @media (max-width: 600px) {
     .site-header .site-title {
         font-size: 32pt;
-        padding: 30px 15px 15px;
+        padding: 15px 15px 15px;
+    }
+    
+    .site-header .site-nav {
+        position: static !important;
+        background-color: transparent !important;
+        border: none !important;
+        text-align: center !important;
+        float: none !important;
+        clear: both !important;
+        display: block !important;
+        line-height: normal !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .site-header .site-nav .nav-trigger,
+    .site-header .site-nav .menu-icon,
+    .site-header .site-nav label[for="nav-trigger"] {
+        display: none !important;
+    }
+    
+    .site-header .site-nav a {
+        display: inline !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #eb3d00 !important;
+        text-decoration: none !important;
+    }
+    
+    .site-header .site-nav a.active {
+        text-decoration: underline !important;
+        text-decoration-color: black !important;
     }
 }
