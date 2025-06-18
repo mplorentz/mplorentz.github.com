@@ -1,0 +1,16 @@
+{
+    // Associate HTML files in Jekyll folders with the Liquid language for better syntax highlighting
+    "files.associations": {
+        "**/_layouts/*.html": "liquid",
+        "**/_includes/*.html": "liquid"
+    },
+    // Use the Prettier extension to format these file types
+    "[liquid]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // Tell the Prettier VSCode extension to use the prettier library from your project's node_modules
+    "prettier.prettierPath": "./node_modules/prettier"
+}
