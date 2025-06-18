@@ -1,4 +1,5 @@
-This is the source repo for http://mattlorentz.com/weblog. The other pages on mattlorentz.com are hosted in https://github.com/mplorentz/mplorentz.github.com.
+This is the source repo for http://mattlorentz.com. It is built with Jekyll and 
+deployed using Github Pages.
 
 # Setup
 
@@ -7,7 +8,7 @@ This is the source repo for http://mattlorentz.com/weblog. The other pages on ma
 
 # Editing the site
 
-Make your changes then run `bundle exec jekyll serve`
+Make your changes then run `bundle exec jekyll serve --incremental`
 
 ## Linking to assets
 
@@ -15,4 +16,4 @@ Make your changes then run `bundle exec jekyll serve`
 
 # Publishing the site
 
-`./scripts/publish_blog`
+`git push origin master`
