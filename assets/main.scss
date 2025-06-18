@@ -30,7 +30,6 @@
 .site-header .site-nav {
     text-align: center;
     font-family: "Lucida Grande", "Helvetica", sans-serif;
-    margin-bottom: 30px;
     float: none !important;
     clear: both;
     display: block;
@@ -54,6 +53,10 @@
 
 a {
     color: #eb3d00;
+}
+
+.page-content {
+    padding-top: 00px;
 }
 
 #welcome {
