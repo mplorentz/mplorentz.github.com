@@ -3,6 +3,10 @@
 @import "minima";
 
 /* Custom header styles */
+.site-header {
+    text-align: center;
+}
+
 .site-header .site-title {
     font-size: 42pt;
     font-family: "Courier New", monospace;
@@ -11,18 +15,26 @@
     padding: 50px 20px 20px;
     margin: 0;
     color: inherit;
+    float: none !important;
+    display: block;
 }
 
 .site-header .site-bio {
     text-align: center;
     font-family: "Courier New", monospace;
     margin-bottom: 20px;
+    clear: both;
+    display: block;
 }
 
 .site-header .site-nav {
     text-align: center;
     font-family: "Lucida Grande", "Helvetica", sans-serif;
     margin-bottom: 30px;
+    float: none !important;
+    clear: both;
+    display: block;
+    line-height: normal;
 }
 
 .site-header .site-nav a {
@@ -36,6 +48,14 @@
 
 a {
     color: #eb3d00;
+}
+
+#welcome {
+    font-size: 16pt;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 }
 
 @media (max-width: 600px) {
