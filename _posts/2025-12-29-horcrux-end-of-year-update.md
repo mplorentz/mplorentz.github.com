@@ -8,7 +8,7 @@ I'm almost 4 months in to building [Horcrux](https://github.com/mplorentz/horcru
 
 # Overview 
 
-I am just completing my first quarter of work on Horcrux, the best way to back up sensitive data to friends and family. To refresh your memory, this is a cross-platform mobile app that uses Shamir's Secret Sharing algorithm to split sensitive data into shares, then uses Nostr to backup those shares to trusted "stewards". This creates a secure backup where no computer or person has a full copy of the data, and restoring is only possible by consent of the stewards.
+I am just completing my first quarter of work on Horcrux, the best way to back up sensitive data to friends and family. This project was called Keydex for most of the first quarter, but I renamed it Horcrux about a month ago. To refresh your memory, this is a cross-platform mobile app that uses Shamir's Secret Sharing algorithm to split sensitive data into shares, then uses Nostr to backup those shares to trusted "stewards". This creates a secure backup where no computer or person has a full copy of the data, and restoring is only possible by consent of the stewards.
 
 I'm pretty happy overall with the state of the app after 3 months. The app has basic versions of all the main features I wanted to implement, and I have been testing it in a private beta with several early adopters which gives me confidence that it will meet their needs. The app is far from done or perfect, and I have cut many features that I wanted, but having a complex cryptography app that's almost consumer-ready after 3 months is something I am very satisfied with.
 
@@ -70,7 +70,7 @@ My OpenSats grant proposal included two projects, first Horcrux and then a Nostr
 
 # Project Timeline
 
-Below is a summary of my work with links to relevant commits and PRs, grouped into phases that gives a rough idea 
+Below is a summary of my work with links to relevant commits and PRs, grouped into phases.
 
 - Startup (2 weeks, Sept 7-20)
     - User interviews
