@@ -12,5 +12,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     // Tell the Prettier VSCode extension to use the prettier library from your project's node_modules
-    "prettier.prettierPath": "./node_modules/prettier"
+    "prettier.prettierPath": "./node_modules/prettier",
+    "makefile.configureOnOpen": false
 }
