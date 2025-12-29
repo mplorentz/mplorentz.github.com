@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- prettier-ignore --><link rel="stylesheet" href="/assets/main.css">
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//analytics.lorentz.is/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Matthew Lorentz" />
+</head>
+
+  <body>
+
+    <header class="site-header" role="banner">
+   <div id="header">
+      <h1 class="site-title">Matthew Lorentz</h1>
+      <div class="site-bio">
+         🌱🚶‍♂️👾☀️👨‍💻🥾🪴
+      </div>
+      <div class="site-nav">
+         <a href="/" >About</a> / <a href="/weblog/" >Weblog</a>
+      </div>
+   </div>
+</header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Cross-posting RSS to Mastodon</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-02-26T20:34:00-05:00" itemprop="datePublished">
+        
+        Feb 26, 2018
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Here are the steps I had to take to set up cross-posting from this blog to Mastodon. The format is a little rough, but hopefully it will help someone.</p>
+
+<p>I did this on my Debian server, but it should work with any RSS feed on any server that can run python.</p>
+<ol>
+  <li>Install <a href="https://gitlab.com/chaica/feed2toot">feed2toot</a>
+    <ul>
+      <li>Install via pip:
+        <ul>
+          <li>Make sure you have python3 and python3-pip installed
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">apt-get install python3 python3-pip</code></li>
+            </ul>
+          </li>
+          <li>Install the feed2toot script
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">pip3 install feed2toot</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Install via git. This is what I ended up doing because I made some modifications to the script (more on that below)
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">git clone git@gitlab.com:mplorentz/feed2toot.git</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Connect feed2toot to Mastodon by running the following command:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">register_feed2toot_app</code></li>
+    </ul>
+  </li>
+  <li>Create your configuration file. This allows you to customize the behavior of feed2toot. You can find the default configuration and a full list of options <a href="https://feed2toot.readthedocs.io/en/latest/configure.html">here</a>. In the file you will want to:
+    <ul>
+      <li>Change <code class="language-plaintext highlighter-rouge">toot_visibility</code> to <code class="language-plaintext highlighter-rouge">public</code> (Once you have tested it)</li>
+      <li>Paste your RSS feed URL into the <code class="language-plaintext highlighter-rouge">uri</code> field.</li>
+    </ul>
+  </li>
+  <li>Test it. These commands will perform a dry run - they will not actually post any toots to Mastodon.
+    <ul>
+      <li>If you installed via pip: <code class="language-plaintext highlighter-rouge">feed2toot -c feed2toot.ini -nv</code></li>
+      <li>If you installed via git: <code class="language-plaintext highlighter-rouge">python3 feed2toot.py -c feed2toot.ini -nv</code></li>
+    </ul>
+  </li>
+  <li>If things look good, you may want to go ahead and tell feed2toot to populate the cache. This prevents it from posting everything in your RSS feed the first time you run it for real. You can do this by running <code class="language-plaintext highlighter-rouge">feed2toot -c feed2toot.ini -p</code>.</li>
+  <li>Run feed2toot on a schedule.
+    <ul>
+      <li>I added the following line to my crontab to run the script every minute: <code class="language-plaintext highlighter-rouge">* * * * * /usr/bin/python3 /path/to/feed2toot.py -c feed2toot.ini</code></li>
+      <li>Don’t forget to change <code class="language-plaintext highlighter-rouge">toot_visibility</code> to <code class="language-plaintext highlighter-rouge">public</code> in your configuration file if you didn’t already. Otherwise no one will see your toots!</li>
+    </ul>
+  </li>
+  <li>(Optional) Configure feed2toot to only toot micro posts.
+    <ul>
+      <li>I have an <a href="https://gitlab.com/chaica/feed2toot/merge_requests/11">open merge request</a> to support filtering items in the RSS feed based on a tag. For now you will need to install <a href="https://gitlab.com/mplorentz/feed2toot">my fork</a> of feed2toot using the git instructions above if you wish to use this feature.
+        <ul>
+          <li>Change the <code class="language-plaintext highlighter-rouge">toot</code> line in your configuration file to this:
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">toot={summary}</code>. This instructs feed2toot to post the content of your micro post instead of the title and a link.</li>
+            </ul>
+          </li>
+          <li>Add the following two lines in the <code class="language-plaintext highlighter-rouge">[rss]</code> section:
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">tags_pattern={tag_name}</code> where “{tag_name}” is the tag that you use for your micro posts. On my Jekyll blog I tag all my micro posts with the “micro” tag, so my configuration file says <code class="language-plaintext highlighter-rouge">tags_pattern=micro</code>.</li>
+              <li><code class="language-plaintext highlighter-rouge">tags_pattern_case_sensitive=false</code></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>(Optional) Configure feed2toot to strip HTML out of your content
+    <ul>
+      <li>My Jekyll blog includes HTML tags in the RSS feed fields. Feed2toot does not strip these tags out by default, so I opened a <a href="https://gitlab.com/chaica/feed2toot/merge_requests/12">merge request</a> to change that. If you install <a href="https://gitlab.com/mplorentz/feed2toot">my fork</a> of feed2toot using the git instructions above then you get this feature free of charge :)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>And that’s it! I can now make a micro-post on my own blog, and it will show up in my RSS feed, on <a href="https://micro.blog/mplorentz">micro.blog</a>, and <a href="https://freeradical.zone/@matt">Mastodon</a>. I’d like to set up another instance of feed2toot that will post links to regular blog posts, but that’s a task for another day.</p>
+
+  </div>
+
+  <a class="u-url" href="/2018/02/26/cross-posting-to-mastodon.html" hidden></a>
+</article>
+
+      </div>
+    </main>
+  </body>
+
+</html>
