@@ -1,0 +1,119 @@
+--- 
+--- 
+@import "minima";
+
+/* Custom header styles */
+.site-header {
+    text-align: center;
+}
+
+.site-header .site-title {
+    font-size: 42pt;
+    font-family: "Courier New", monospace;
+    font-weight: normal;
+    text-align: center;
+    padding: 0px 20px 20px;
+    margin: 0;
+    color: inherit;
+    float: none !important;
+    display: block;
+}
+
+.site-header .site-bio {
+    text-align: center;
+    font-family: "Courier New", monospace;
+    margin-bottom: 20px;
+    clear: both;
+    display: block;
+}
+
+.site-header .site-nav {
+    text-align: center;
+    font-family: "Lucida Grande", "Helvetica", sans-serif;
+    float: none !important;
+    clear: both;
+    display: block;
+    line-height: normal;
+}
+
+.site-header .site-nav a {
+    color: #eb3d00;
+    text-decoration: none;
+}
+
+.site-header .site-nav a:hover {
+    text-decoration: underline;
+}
+
+.site-header .site-nav a.active {
+    color: #eb3d00;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+
+a {
+    color: #eb3d00;
+}
+
+.page-content {
+    padding-top: 0px 
+}
+
+.post-header {
+    margin-bottom: 00px;
+    margin-top: 00px;
+    padding: 5px;
+}
+
+/* Add spacing around p tags on index page */
+.home p, .post-content p {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+#welcome {
+    font-size: 16pt;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+/* Override mobile navigation to keep same layout on all screen sizes */
+@media (max-width: 600px) {
+    .site-header .site-title {
+        font-size: 32pt;
+        padding: 15px 15px 15px;
+    }
+    
+    .site-header .site-nav {
+        position: static !important;
+        background-color: transparent !important;
+        border: none !important;
+        text-align: center !important;
+        float: none !important;
+        clear: both !important;
+        display: block !important;
+        line-height: normal !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .site-header .site-nav .nav-trigger,
+    .site-header .site-nav .menu-icon,
+    .site-header .site-nav label[for="nav-trigger"] {
+        display: none !important;
+    }
+    
+    .site-header .site-nav a {
+        display: inline !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #eb3d00 !important;
+        text-decoration: none !important;
+    }
+    
+    .site-header .site-nav a.active {
+        text-decoration: underline !important;
+        text-decoration-color: black !important;
+    }
+}
