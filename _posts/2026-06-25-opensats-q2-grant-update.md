@@ -12,7 +12,7 @@ You can view the previous quarterly report [here](/2026/03/30/opensats-q1-grant-
 
 > Describe your progress and accomplishments since the last report. Include links to pull requests, commits, and other work.
 
-This quarter I spent the bulk of my time getting Horcrux ready for its public beta release, which I accomplished at the tail end of the quarter. Deploying a tool intended to hold people's most sensitive data is something I do not take lightly, and it has taken longer than I expected to feel confident that it is ready.
+This quarter I spent the bulk of my time getting [Horcrux](https://horcruxbackup.com) ready for its public beta release, which I accomplished at the tail end of the quarter. Deploying a tool intended to hold people's most sensitive data is something I do not take lightly, and it has taken longer than I expected to feel confident that it is ready.
 
 The highlights from the quarter are the implementation of a push notification system, a complete rewrite of the data layer, and many smaller bugfixes and improvements.
 
@@ -38,7 +38,7 @@ PRs: [#237](https://github.com/mplorentz/horcrux/pull/237), [#239](https://githu
 
 ### Flotilla Contributions
 
-I dedicated less time than I planned to Flotilla this quarter, but I did ship a few PRs building on my Voice Rooms feature from Q1:
+I dedicated less time than I planned to [Flotilla](https://app.flotilla.social) this quarter, but I did ship a few PRs building on my Voice Rooms feature from Q1:
 
 - Added video and screen sharing to calls: <https://gitea.coracle.social/coracle/flotilla/pulls/135>
 - Added the ability to change audio devices during a call: <https://gitea.coracle.social/coracle/flotilla/pulls/112>
