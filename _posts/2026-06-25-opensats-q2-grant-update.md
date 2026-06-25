@@ -38,7 +38,7 @@ PRs: [#237](https://github.com/mplorentz/horcrux/pull/237), [#239](https://githu
 
 ### Flotilla Contributions
 
-I dedicated less time than I planned to [Flotilla](https://app.flotilla.social) this quarter, but I did ship a few PRs building on my Voice Rooms feature from Q1:
+I dedicated less time than I planned to [Flotilla](https://flotilla.social) this quarter, but I did ship a few PRs building on my Voice Rooms feature from Q1:
 
 - Added video and screen sharing to calls: <https://gitea.coracle.social/coracle/flotilla/pulls/135>
 - Added the ability to change audio devices during a call: <https://gitea.coracle.social/coracle/flotilla/pulls/112>
